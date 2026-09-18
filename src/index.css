@@ -482,6 +482,57 @@ video { transform: translateZ(0); }
     0 12px 120px rgba(233, 227, 215, 100);
 }
 
+/* === CONTACT SECTION FLUID LAYOUT === */
+.contact-fluid {
+  padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3rem);
+  gap: clamp(0.5rem, 1.5vh, 1.5rem);
+}
+
+/* Each element scales independently with clamp() */
+.contact-heading {
+  font-size: clamp(1.75rem, 5.5vw, 4.5rem);
+  margin-bottom: clamp(0.25rem, 0.8vh, 0.75rem);
+  max-width: clamp(20rem, 90vw, 50rem);
+  line-height: 1.1;
+}
+
+.contact-subheading {
+  font-size: clamp(0.9rem, 2.2vw, 2.25rem);
+  margin-bottom: clamp(0.75rem, 2.5vh, 2rem);
+  max-width: clamp(18rem, 80vw, 42rem);
+  line-height: 1.35;
+  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.contact-links-group {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2.5vh, 2.5rem);
+  max-width: clamp(20rem, 95vw, 60rem);
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+.contact-link-block {
+  gap: clamp(0.2rem, 0.6vh, 0.5rem);
+}
+
+.contact-icon {
+  width: clamp(1.5rem, 3vw, 2.5rem) !important;
+  height: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
+
+.contact-link-text {
+  font-size: clamp(0.85rem, 2vw, 1.75rem);
+  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
+  line-height: 1.2;
+}
+
+.contact-link-desc {
+  font-size: clamp(0.75rem, 1.8vw, 1.5rem);
+  line-height: 1.3;
+  max-width: clamp(16rem, 75vw, 40rem);
+}
+
 /* === HERO NAME HOVER === */
 /* Re-enable pointer events on the name text layers (parent has pointer-events:none) */
 
