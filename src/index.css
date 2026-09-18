@@ -470,6 +470,18 @@ video { transform: translateZ(0); }
   image-rendering: -webkit-optimize-contrast;
 }
 
+/* === CONTACT SECTION TEXT SHADOW === */
+#contact-section h2,
+#contact-section p,
+#contact-section a,
+#contact-section span {
+  text-shadow:
+    0 2px 24px rgba(233, 227, 215, 0.95),
+    0 4px 48px rgba(233, 227, 215, 0.8),
+    0 8px 80px rgba(233, 227, 215, 0.6),
+    0 12px 120px rgba(233, 227, 215, 0.4);
+}
+
 /* === HERO NAME HOVER === */
 /* Re-enable pointer events on the name text layers (parent has pointer-events:none) */
 
