@@ -476,10 +476,10 @@ video { transform: translateZ(0); }
 #contact-section a,
 #contact-section span {
   text-shadow:
-    0 2px 24px rgba(233, 227, 215, 0.95),
-    0 4px 48px rgba(233, 227, 215, 0.8),
-    0 8px 80px rgba(233, 227, 215, 0.6),
-    0 12px 120px rgba(233, 227, 215, 0.4);
+    0 2px 24px rgba(233, 227, 215, 1),
+    0 4px 48px rgba(233, 227, 215, 1),
+    0 8px 80px rgba(233, 227, 215, 1),
+    0 12px 120px rgba(233, 227, 215, 1);
 }
 
 /* === HERO NAME HOVER === */
