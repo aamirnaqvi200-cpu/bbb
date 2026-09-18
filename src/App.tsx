@@ -17,6 +17,16 @@ function setMobileVH() {
   }
 }
 
+function setNarrowness() {
+  const w = window.innerWidth;
+  if (w >= 1024) {
+    document.documentElement.style.setProperty('--narrowness', '0');
+  } else if (w >= 768) {
+    const t = (1024 - w) / (1024 - 768);
+    document.documentElement.style.setProperty('--narrowness', String(Math.max(0, Math.min(1, t))));
+  }
+}
+
 const isMobile = () => window.innerWidth < 768;
 
 interface HeroImage {
@@ -122,7 +132,8 @@ function App() {
 
   useEffect(() => {
     setMobileVH();
-    const update = () => setMobileVH();
+    setNarrowness();
+    const update = () => { setMobileVH(); setNarrowness(); };
     window.addEventListener('resize', update);
     window.addEventListener('orientationchange', update);
     window.addEventListener('scroll', setMobileVH);
@@ -268,7 +279,7 @@ function App() {
                     })
               }}
             >
-              <img src={img.src} alt="" decoding="async" className={img.isSmall ? 'w-full h-auto' : 'w-full h-full object-contain'} />
+              <img src={img.src} alt="" decoding="async" className={`${img.isSmall ? 'w-full h-auto' : 'w-full h-full object-contain'} ${img.src.includes('me 2') ? 'hero-img-me2' : 'hero-img-me'}`} />
             </ClickWrapper>
           ))}
 
@@ -278,8 +289,10 @@ function App() {
             width={HERO_DESKTOP.width}
             height={HERO_DESKTOP.height}
             fit="contain"
-            className="desktop-image hero-image-layer fixed no-parallax-y"
+            className="desktop-image hero-image-layer fixed no-parallax-y hero-design-text"
             style={{ inset: 0, width: '100%', height: '100%', zIndex: 20 }}
+            narrownessScale={0.4}
+            narrownessTranslateY={-150}
           />
         </div>
 

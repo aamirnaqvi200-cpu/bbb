@@ -10,6 +10,10 @@ interface HeroDesignProps {
   fit?: 'cover' | 'contain';
   className?: string;
   style?: React.CSSProperties;
+  /** Extra scale factor applied at --narrowness=1 (e.g. 0.4 = 40% larger). */
+  narrownessScale?: number;
+  /** Extra translateY in px applied at --narrowness=1 (negative = up). */
+  narrownessTranslateY?: number;
 }
 
 /**
@@ -17,7 +21,8 @@ interface HeroDesignProps {
  * positioned text/image layers. This wrapper centres that canvas and scales it with a
  * CSS transform so it lines up with the hero photo behind it, at any viewport size.
  */
-export function HeroDesign({ html, width, height, fit = 'cover', className = '', style }: HeroDesignProps) {
+export function HeroDesign({ html, width, height, fit = 'cover', className = '', style,
+  narrownessScale = 0, narrownessTranslateY = 0 }: HeroDesignProps) {
   const boxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +37,10 @@ export function HeroDesign({ html, width, height, fit = 'cover', className = '',
       const scale = fit === 'cover'
         ? Math.max(w / width, h / height)
         : Math.min(w / width, h / height);
-      canvas.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      const narrowness = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--narrowness') || '0') || 0;
+      const extraScale = 1 + narrowness * narrownessScale;
+      const extraY = narrowness * narrownessTranslateY;
+      canvas.style.transform = `translate(-50%, calc(-50% + ${extraY}px)) scale(${scale * extraScale})`;
     };
 
     resize();

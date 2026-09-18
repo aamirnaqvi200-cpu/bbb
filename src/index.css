@@ -443,6 +443,23 @@ video { transform: translateZ(0); }
   cursor: pointer;
 }
 
+/* === RESPONSIVE HERO IMAGES (desktop only, 768px–1024px) === */
+/* --narrowness goes from 0 (>=1024px) to 1 (<=768px) */
+.hero-img-me,
+.hero-img-me2 {
+  transition: transform 0.15s ease-out;
+}
+
+/* me.webp: stays at same scale, moves to middle-bottom */
+.hero-img-me {
+  transform: translateY(calc(var(--narrowness, 0) * 30vh));
+}
+
+/* me 2.webp: scales down and moves left until off-screen */
+.hero-img-me2 {
+  transform: translateX(calc(var(--narrowness, 0) * -120vw)) scale(calc(1 - var(--narrowness, 0) * 0.7));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bounce-arrow,
   .animate-fade-in-delayed,
